@@ -1,0 +1,12 @@
+<div class="container mt-4">
+  <h1>My Workouts</h1>
+  <% @workouts.each do |workout| %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to workout.name, workout %></h5>
+        <p class="card-text"><%= workout.date %></p>
+      </div>
+    </div>
+  <% end %>
+  <%= link_to "New Workout", new_workout_path, class: "btn btn-primary" %>
+</div>

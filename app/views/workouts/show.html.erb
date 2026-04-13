@@ -1,0 +1,48 @@
+<div class="container mt-4">
+  <h1><%= @workout.name %></h1>
+  <p>Date: <%= @workout.date %></p>
+  <p>Notes: <%= @workout.notes %></p>
+
+  <div class="mb-3">
+    <%= link_to "Home", workouts_path, class: "btn btn-primary" %>
+    <%= link_to "Edit", edit_workout_path(@workout), class: "btn btn-secondary" %>
+    <%= link_to "Delete", @workout, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+  </div>
+
+  <h2 class="mt-4">Exercises</h2>
+  <% @workout.exercises.each do |exercise| %>
+    <div class="card mb-2">
+      <div class="card-body">
+        <p><strong><%= exercise.name %></strong> — <%= exercise.sets %> sets x <%= exercise.reps %> reps @ <%= exercise.weight %>kg</p>
+        <%= link_to "Remove", workout_exercise_path(@workout, exercise), data: { turbo_method: :delete }, class: "btn btn-sm btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+
+  <h3 class="mt-4">Add Exercise</h3>
+  <%= form_with model: [@workout, Exercise.new] do |f| %>
+    <div class="mb-3">
+      <%= f.label :name, class: "form-label" %>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="row">
+      <div class="col mb-3">
+        <%= f.label :sets, class: "form-label" %>
+        <%= f.number_field :sets, class: "form-control" %>
+      </div>
+
+      <div class="col mb-3">
+        <%= f.label :reps, class: "form-label" %>
+        <%= f.number_field :reps, class: "form-control" %>
+      </div>
+
+      <div class="col mb-3">
+        <%= f.label :weight, class: "form-label" %>
+        <%= f.number_field :weight, class: "form-control" %>
+      </div>
+    </div>
+
+    <%= f.submit "Add Exercise", class: "btn btn-success" %>
+  <% end %>
+</div>
