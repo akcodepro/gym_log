@@ -1050,3 +1050,1340 @@ Processing by WorkoutsController#show as HTML
 Completed 200 OK in 35ms (Views: 21.0ms | ActiveRecord: 10.9ms | Allocations: 34680)
 
 
+Started GET "/workouts" for ::1 at 2026-04-13 17:54:14 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (5.4ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 14.9ms | Allocations: 3495)
+  Rendered layout layouts/application.html.erb (Duration: 30.2ms | Allocations: 23625)
+Completed 200 OK in 34ms (Views: 23.8ms | ActiveRecord: 7.8ms | Allocations: 25719)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-13 17:54:15 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1223)
+  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 2331)
+Completed 200 OK in 10ms (Views: 8.1ms | ActiveRecord: 0.0ms | Allocations: 2659)
+
+
+Started POST "/workouts" for ::1 at 2026-04-13 17:54:31 +0200
+Processing by WorkoutsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "workout"=>{"name"=>"Tuesday", "date"=>"2026-04-14", "notes"=>"lower body"}, "commit"=>"Save"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+  [1m[36mWorkout Create (2.1ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "date", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "Tuesday"], ["date", "2026-04-14"], ["notes", "lower body"], ["created_at", "2026-04-13 15:54:31.712437"], ["updated_at", "2026-04-13 15:54:31.712437"]]
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+Redirected to http://localhost:3000/workouts/3
+Completed 302 Found in 10ms (ActiveRecord: 2.9ms | Allocations: 2263)
+
+
+Started GET "/workouts/3" for ::1 at 2026-04-13 17:54:31 +0200
+Processing by WorkoutsController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 3]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 8.8ms | Allocations: 7435)
+  Rendered layout layouts/application.html.erb (Duration: 12.3ms | Allocations: 8532)
+Completed 200 OK in 15ms (Views: 12.7ms | ActiveRecord: 0.3ms | Allocations: 9871)
+
+
+Started POST "/workouts/3/exercises" for ::1 at 2026-04-13 17:54:38 +0200
+Processing by ExercisesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "exercise"=>{"name"=>"", "sets"=>"", "reps"=>"", "weight"=>""}, "commit"=>"Add Exercise", "workout_id"=>"3"}
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/exercises_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+  [1m[36mExercise Create (1.4ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "sets", "reps", "weight", "workout_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", ""], ["sets", nil], ["reps", nil], ["weight", nil], ["workout_id", 3], ["created_at", "2026-04-13 15:54:38.750485"], ["updated_at", "2026-04-13 15:54:38.750485"]]
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+Redirected to http://localhost:3000/workouts/3
+Completed 302 Found in 133ms (ActiveRecord: 1.9ms | Allocations: 3220)
+
+
+Started GET "/workouts/3" for ::1 at 2026-04-13 17:54:38 +0200
+Processing by WorkoutsController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 3]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1768)
+  Rendered layout layouts/application.html.erb (Duration: 79.8ms | Allocations: 2864)
+Completed 200 OK in 82ms (Views: 80.2ms | ActiveRecord: 0.3ms | Allocations: 3472)
+
+
+Started POST "/workouts/3/exercises" for ::1 at 2026-04-13 17:54:39 +0200
+Processing by ExercisesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "exercise"=>{"name"=>"", "sets"=>"", "reps"=>"", "weight"=>""}, "commit"=>"Add Exercise", "workout_id"=>"3"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/exercises_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+  [1m[36mExercise Create (1.7ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "sets", "reps", "weight", "workout_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", ""], ["sets", nil], ["reps", nil], ["weight", nil], ["workout_id", 3], ["created_at", "2026-04-13 15:54:39.908821"], ["updated_at", "2026-04-13 15:54:39.908821"]]
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+Redirected to http://localhost:3000/workouts/3
+Completed 302 Found in 10ms (ActiveRecord: 2.3ms | Allocations: 2498)
+
+
+Started GET "/workouts/3" for ::1 at 2026-04-13 17:54:39 +0200
+Processing by WorkoutsController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 3]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1791)
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 2889)
+Completed 200 OK in 14ms (Views: 11.6ms | ActiveRecord: 0.2ms | Allocations: 3498)
+
+
+Started POST "/workouts/3/exercises" for ::1 at 2026-04-13 17:54:41 +0200
+Processing by ExercisesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "exercise"=>{"name"=>"", "sets"=>"", "reps"=>"", "weight"=>""}, "commit"=>"Add Exercise", "workout_id"=>"3"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/exercises_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+  [1m[36mExercise Create (2.3ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "sets", "reps", "weight", "workout_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", ""], ["sets", nil], ["reps", nil], ["weight", nil], ["workout_id", 3], ["created_at", "2026-04-13 15:54:41.281218"], ["updated_at", "2026-04-13 15:54:41.281218"]]
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+Redirected to http://localhost:3000/workouts/3
+Completed 302 Found in 117ms (ActiveRecord: 3.0ms | Allocations: 2505)
+
+
+Started GET "/workouts/3" for ::1 at 2026-04-13 17:54:41 +0200
+Processing by WorkoutsController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 3]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1870)
+  Rendered layout layouts/application.html.erb (Duration: 164.6ms | Allocations: 2979)
+Completed 200 OK in 169ms (Views: 166.5ms | ActiveRecord: 0.2ms | Allocations: 3587)
+
+
+Started POST "/workouts/3/exercises" for ::1 at 2026-04-13 17:54:42 +0200
+Processing by ExercisesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "exercise"=>{"name"=>"", "sets"=>"", "reps"=>"", "weight"=>""}, "commit"=>"Add Exercise", "workout_id"=>"3"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/exercises_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+  [1m[36mExercise Create (0.7ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "sets", "reps", "weight", "workout_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", ""], ["sets", nil], ["reps", nil], ["weight", nil], ["workout_id", 3], ["created_at", "2026-04-13 15:54:42.757341"], ["updated_at", "2026-04-13 15:54:42.757341"]]
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+Redirected to http://localhost:3000/workouts/3
+Completed 302 Found in 14ms (ActiveRecord: 1.1ms | Allocations: 2485)
+
+
+Started GET "/workouts/3" for ::1 at 2026-04-13 17:54:42 +0200
+Processing by WorkoutsController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 3]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1917)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 3013)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.1ms | Allocations: 3621)
+
+
+Started GET "/workouts" for ::1 at 2026-04-13 17:54:46 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 527)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 1833)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.2ms | Allocations: 2077)
+
+
+Started GET "/workouts/3" for ::1 at 2026-04-13 17:54:47 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 3]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1926)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 3023)
+Completed 200 OK in 11ms (Views: 7.8ms | ActiveRecord: 0.4ms | Allocations: 3628)
+
+
+Started GET "/workouts/3/edit" for ::1 at 2026-04-13 17:54:49 +0200
+Processing by WorkoutsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:15:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/edit.html.erb within layouts/application
+  Rendered workouts/edit.html.erb within layouts/application (Duration: 6.6ms | Allocations: 1244)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 2341)
+Completed 200 OK in 13ms (Views: 9.4ms | ActiveRecord: 0.2ms | Allocations: 3014)
+
+
+Started PATCH "/workouts/3" for ::1 at 2026-04-13 17:54:51 +0200
+Processing by WorkoutsController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "workout"=>{"name"=>"Tuesday", "date"=>"2026-04-14", "notes"=>"lower body"}, "commit"=>"Save", "id"=>"3"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:28:in `update'
+Redirected to http://localhost:3000/workouts/3
+Completed 302 Found in 5ms (ActiveRecord: 0.3ms | Allocations: 982)
+
+
+Started GET "/workouts/3" for ::1 at 2026-04-13 17:54:51 +0200
+Processing by WorkoutsController#show as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.0ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 3]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1911)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 3007)
+Completed 200 OK in 7ms (Views: 5.1ms | ActiveRecord: 0.2ms | Allocations: 3615)
+
+
+Started GET "/workouts/3/edit" for ::1 at 2026-04-13 17:54:54 +0200
+Processing by WorkoutsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:15:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/edit.html.erb within layouts/application
+  Rendered workouts/edit.html.erb within layouts/application (Duration: 2.9ms | Allocations: 911)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 2007)
+Completed 200 OK in 9ms (Views: 6.5ms | ActiveRecord: 0.3ms | Allocations: 2612)
+
+
+Started DELETE "/workouts/3?_method=delete" for ::1 at 2026-04-13 17:55:00 +0200
+Processing by WorkoutsController#destroy as TURBO_STREAM
+  Parameters: {"id"=>"3"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:37:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+  [1m[36mWorkout Destroy (1.6ms)[0m  [1m[31mDELETE FROM "workouts" WHERE "workouts"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+Redirected to http://localhost:3000/workouts
+Completed 302 Found in 8ms (ActiveRecord: 2.3ms | Allocations: 1952)
+
+
+Started GET "/workouts" for ::1 at 2026-04-13 17:55:00 +0200
+Processing by WorkoutsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 8.6ms | Allocations: 482)
+  Rendered layout layouts/application.html.erb (Duration: 10.5ms | Allocations: 1802)
+Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.1ms | Allocations: 2050)
+
+
+Started GET "/workouts/2" for ::1 at 2026-04-13 17:55:01 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.2ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 2]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 6.5ms | Allocations: 1800)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 2909)
+Completed 200 OK in 12ms (Views: 9.0ms | ActiveRecord: 0.5ms | Allocations: 3514)
+
+
+Started DELETE "/workouts/2?_method=delete" for ::1 at 2026-04-13 17:55:05 +0200
+Processing by WorkoutsController#destroy as TURBO_STREAM
+  Parameters: {"id"=>"2"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:37:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+  [1m[36mWorkout Destroy (0.8ms)[0m  [1m[31mDELETE FROM "workouts" WHERE "workouts"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+Redirected to http://localhost:3000/workouts
+Completed 302 Found in 8ms (ActiveRecord: 1.3ms | Allocations: 1956)
+
+
+Started GET "/workouts" for ::1 at 2026-04-13 17:55:05 +0200
+Processing by WorkoutsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 427)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 1739)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.1ms | Allocations: 1986)
+
+
+Started GET "/" for ::1 at 2026-04-14 14:35:19 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1350)
+  Rendered layout layouts/application.html.erb (Duration: 31.3ms | Allocations: 41452)
+Completed 200 OK in 43ms (Views: 32.1ms | ActiveRecord: 0.9ms | Allocations: 52479)
+
+
+Started GET "/" for ::1 at 2026-04-14 14:35:58 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.4ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 428)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 1849)
+Completed 200 OK in 15ms (Views: 11.8ms | ActiveRecord: 0.4ms | Allocations: 2094)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-14 14:36:31 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 25.0ms | Allocations: 2361)
+  Rendered layout layouts/application.html.erb (Duration: 26.3ms | Allocations: 3536)
+Completed 200 OK in 55ms (Views: 26.9ms | ActiveRecord: 2.7ms | Allocations: 13733)
+
+
+Started POST "/workouts" for ::1 at 2026-04-14 14:36:33 +0200
+Processing by WorkoutsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "workout"=>{"name"=>"", "date"=>"", "notes"=>""}, "commit"=>"Save"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+  [1m[36mWorkout Create (2.7ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "date", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", ""], ["date", nil], ["notes", ""], ["created_at", "2026-04-14 12:36:33.653614"], ["updated_at", "2026-04-14 12:36:33.653614"]]
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+Redirected to http://localhost:3000/workouts/4
+Completed 302 Found in 10ms (ActiveRecord: 3.4ms | Allocations: 3624)
+
+
+Started GET "/workouts/4" for ::1 at 2026-04-14 14:36:33 +0200
+Processing by WorkoutsController#show as TURBO_STREAM
+  Parameters: {"id"=>"4"}
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 4]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 18.2ms | Allocations: 11477)
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | Allocations: 12645)
+Completed 200 OK in 24ms (Views: 19.7ms | ActiveRecord: 0.4ms | Allocations: 15197)
+
+
+Started POST "/workouts/4/exercises" for ::1 at 2026-04-14 14:36:35 +0200
+Processing by ExercisesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "exercise"=>{"name"=>"", "sets"=>"", "reps"=>"", "weight"=>""}, "commit"=>"Add Exercise", "workout_id"=>"4"}
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/exercises_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+  [1m[36mExercise Create (1.8ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "sets", "reps", "weight", "workout_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", ""], ["sets", nil], ["reps", nil], ["weight", nil], ["workout_id", 4], ["created_at", "2026-04-14 12:36:35.964943"], ["updated_at", "2026-04-14 12:36:35.964943"]]
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+Redirected to http://localhost:3000/workouts/4
+Completed 302 Found in 19ms (ActiveRecord: 2.2ms | Allocations: 3673)
+
+
+Started GET "/workouts/4" for ::1 at 2026-04-14 14:36:35 +0200
+Processing by WorkoutsController#show as TURBO_STREAM
+  Parameters: {"id"=>"4"}
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.6ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 4]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 4.9ms | Allocations: 1817)
+  Rendered layout layouts/application.html.erb (Duration: 12.4ms | Allocations: 2973)
+Completed 200 OK in 14ms (Views: 12.0ms | ActiveRecord: 0.7ms | Allocations: 3581)
+
+
+Started POST "/workouts/4/exercises" for ::1 at 2026-04-14 14:36:37 +0200
+Processing by ExercisesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "exercise"=>{"name"=>"", "sets"=>"", "reps"=>"", "weight"=>""}, "commit"=>"Add Exercise", "workout_id"=>"4"}
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/exercises_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+  [1m[36mExercise Create (2.5ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "sets", "reps", "weight", "workout_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", ""], ["sets", nil], ["reps", nil], ["weight", nil], ["workout_id", 4], ["created_at", "2026-04-14 12:36:37.225171"], ["updated_at", "2026-04-14 12:36:37.225171"]]
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+Redirected to http://localhost:3000/workouts/4
+Completed 302 Found in 11ms (ActiveRecord: 2.8ms | Allocations: 2528)
+
+
+Started GET "/workouts/4" for ::1 at 2026-04-14 14:36:37 +0200
+Processing by WorkoutsController#show as TURBO_STREAM
+  Parameters: {"id"=>"4"}
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.0ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 4]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1825)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 2996)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.1ms | Allocations: 3606)
+
+
+Started POST "/workouts/4/exercises" for ::1 at 2026-04-14 14:36:38 +0200
+Processing by ExercisesController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "exercise"=>{"name"=>"", "sets"=>"", "reps"=>"", "weight"=>""}, "commit"=>"Add Exercise", "workout_id"=>"4"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/exercises_controller.rb:3:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+  [1m[36mExercise Create (1.8ms)[0m  [1m[32mINSERT INTO "exercises" ("name", "sets", "reps", "weight", "workout_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", ""], ["sets", nil], ["reps", nil], ["weight", nil], ["workout_id", 4], ["created_at", "2026-04-14 12:36:38.697615"], ["updated_at", "2026-04-14 12:36:38.697615"]]
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/exercises_controller.rb:5:in `create'
+Redirected to http://localhost:3000/workouts/4
+Completed 302 Found in 9ms (ActiveRecord: 2.3ms | Allocations: 2520)
+
+
+Started GET "/workouts/4" for ::1 at 2026-04-14 14:36:38 +0200
+Processing by WorkoutsController#show as TURBO_STREAM
+  Parameters: {"id"=>"4"}
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 4]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1898)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 3053)
+Completed 200 OK in 7ms (Views: 5.2ms | ActiveRecord: 0.2ms | Allocations: 3662)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:36:40 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 475)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 1888)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.2ms | Allocations: 2132)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-14 14:36:44 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 922)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 2082)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms | Allocations: 2333)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-14 14:36:46 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 934)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 2093)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.0ms | Allocations: 2344)
+
+
+Started POST "/workouts" for ::1 at 2026-04-14 14:36:50 +0200
+Processing by WorkoutsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "workout"=>{"name"=>"ads", "date"=>"", "notes"=>""}, "commit"=>"Save"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+  [1m[36mWorkout Create (2.1ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "date", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "ads"], ["date", nil], ["notes", ""], ["created_at", "2026-04-14 12:36:50.463235"], ["updated_at", "2026-04-14 12:36:50.463235"]]
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+Redirected to http://localhost:3000/workouts/5
+Completed 302 Found in 14ms (ActiveRecord: 2.7ms | Allocations: 2026)
+
+
+Started GET "/workouts/5" for ::1 at 2026-04-14 14:36:50 +0200
+Processing by WorkoutsController#show as TURBO_STREAM
+  Parameters: {"id"=>"5"}
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 5]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1709)
+  Rendered layout layouts/application.html.erb (Duration: 20.0ms | Allocations: 2871)
+Completed 200 OK in 25ms (Views: 20.4ms | ActiveRecord: 0.2ms | Allocations: 3479)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:36:51 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 509)
+  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 1911)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.2ms | Allocations: 2157)
+
+
+Started GET "/workouts/5/edit" for ::1 at 2026-04-14 14:36:52 +0200
+Processing by WorkoutsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:15:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/edit.html.erb within layouts/application
+  Rendered workouts/edit.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1277)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 2432)
+Completed 200 OK in 12ms (Views: 7.4ms | ActiveRecord: 0.3ms | Allocations: 3104)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:36:53 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 509)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 1928)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.1ms | Allocations: 2173)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:36:57 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 509)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 1931)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.2ms | Allocations: 2175)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-14 14:37:07 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 5.9ms | Allocations: 928)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 2087)
+Completed 200 OK in 10ms (Views: 8.2ms | ActiveRecord: 0.0ms | Allocations: 2338)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:37:09 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 509)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 1926)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.2ms | Allocations: 2170)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-14 14:37:10 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 3.8ms | Allocations: 940)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 2099)
+Completed 200 OK in 10ms (Views: 8.5ms | ActiveRecord: 0.0ms | Allocations: 2350)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:37:11 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 509)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 1928)
+Completed 200 OK in 9ms (Views: 8.1ms | ActiveRecord: 0.2ms | Allocations: 2172)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:37:13 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 509)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 1938)
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.1ms | Allocations: 2183)
+
+
+Started GET "/workouts/5" for ::1 at 2026-04-14 14:37:14 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 5]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 6.7ms | Allocations: 1706)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 2862)
+Completed 200 OK in 12ms (Views: 9.3ms | ActiveRecord: 0.4ms | Allocations: 3467)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:37:15 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 509)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 1928)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.1ms | Allocations: 2173)
+
+
+Started GET "/workouts/5/edit" for ::1 at 2026-04-14 14:37:15 +0200
+Processing by WorkoutsController#edit as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:15:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/edit.html.erb within layouts/application
+  Rendered workouts/edit.html.erb within layouts/application (Duration: 1.5ms | Allocations: 969)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 2124)
+Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 0.2ms | Allocations: 2729)
+
+
+Started DELETE "/workouts/5?_method=delete" for ::1 at 2026-04-14 14:37:17 +0200
+Processing by WorkoutsController#destroy as TURBO_STREAM
+  Parameters: {"id"=>"5"}
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:37:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+  [1m[36mWorkout Destroy (2.4ms)[0m  [1m[31mDELETE FROM "workouts" WHERE "workouts"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+Redirected to http://localhost:3000/workouts
+Completed 302 Found in 8ms (ActiveRecord: 2.9ms | Allocations: 2099)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:37:17 +0200
+Processing by WorkoutsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 473)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 1892)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.1ms | Allocations: 2139)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-14 14:37:19 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 937)
+  Rendered layout layouts/application.html.erb (Duration: 4.3ms | Allocations: 2097)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 2348)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-14 14:37:25 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 925)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 2084)
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.0ms | Allocations: 2335)
+
+
+Started GET "/" for ::1 at 2026-04-14 14:37:33 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 473)
+  Rendered layout layouts/application.html.erb (Duration: 11.8ms | Allocations: 1886)
+Completed 200 OK in 15ms (Views: 12.8ms | ActiveRecord: 0.3ms | Allocations: 2130)
+
+
+Started GET "/" for ::1 at 2026-04-14 14:37:33 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 473)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 1905)
+Completed 200 OK in 14ms (Views: 3.4ms | ActiveRecord: 0.1ms | Allocations: 2151)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:38:03 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 473)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 1905)
+Completed 200 OK in 15ms (Views: 9.7ms | ActiveRecord: 0.2ms | Allocations: 2151)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-14 14:38:04 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 919)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 2078)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 2329)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-14 14:38:05 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 931)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 2090)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 2342)
+
+
+Started POST "/workouts" for ::1 at 2026-04-14 14:38:14 +0200
+Processing by WorkoutsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "workout"=>{"name"=>"etetwd", "date"=>"2026-04-14", "notes"=>"end"}, "commit"=>"Save"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+  [1m[36mWorkout Create (2.2ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "date", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "etetwd"], ["date", "2026-04-14"], ["notes", "end"], ["created_at", "2026-04-14 12:38:14.978850"], ["updated_at", "2026-04-14 12:38:14.978850"]]
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+Redirected to http://localhost:3000/workouts/6
+Completed 302 Found in 12ms (ActiveRecord: 2.8ms | Allocations: 2047)
+
+
+Started GET "/workouts/6" for ::1 at 2026-04-14 14:38:14 +0200
+Processing by WorkoutsController#show as TURBO_STREAM
+  Parameters: {"id"=>"6"}
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 6]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1734)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 2889)
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.1ms | Allocations: 3497)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-14 14:38:19 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 4.5ms | Allocations: 946)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 2106)
+Completed 200 OK in 11ms (Views: 8.6ms | ActiveRecord: 0.0ms | Allocations: 2357)
+
+
+Started POST "/workouts" for ::1 at 2026-04-14 14:38:26 +0200
+Processing by WorkoutsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "workout"=>{"name"=>"dwqd", "date"=>"2026-04-15", "notes"=>"dqdwdq"}, "commit"=>"Save"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+  [1m[36mWorkout Create (2.4ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "date", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "dwqd"], ["date", "2026-04-15"], ["notes", "dqdwdq"], ["created_at", "2026-04-14 12:38:26.497057"], ["updated_at", "2026-04-14 12:38:26.497057"]]
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+Redirected to http://localhost:3000/workouts/7
+Completed 302 Found in 11ms (ActiveRecord: 3.1ms | Allocations: 2039)
+
+
+Started GET "/workouts/7" for ::1 at 2026-04-14 14:38:26 +0200
+Processing by WorkoutsController#show as TURBO_STREAM
+  Parameters: {"id"=>"7"}
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 7]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 5.9ms | Allocations: 1717)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 2873)
+Completed 200 OK in 15ms (Views: 13.0ms | ActiveRecord: 0.3ms | Allocations: 3482)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:38:28 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 563)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 1971)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.2ms | Allocations: 2216)
+
+
+Started GET "/" for ::1 at 2026-04-14 14:38:31 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 563)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 1980)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.1ms | Allocations: 2225)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:38:34 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 563)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 1982)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.1ms | Allocations: 2226)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:38:41 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.7ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 563)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 1982)
+Completed 200 OK in 9ms (Views: 7.2ms | ActiveRecord: 0.7ms | Allocations: 2227)
+
+
+Started GET "/workouts/7" for ::1 at 2026-04-14 14:38:44 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 7]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1738)
+  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 2893)
+Completed 200 OK in 11ms (Views: 7.8ms | ActiveRecord: 0.3ms | Allocations: 3498)
+
+
+Started DELETE "/workouts/7?_method=delete" for ::1 at 2026-04-14 14:38:48 +0200
+Processing by WorkoutsController#destroy as TURBO_STREAM
+  Parameters: {"id"=>"7"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:37:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+  [1m[36mWorkout Destroy (1.1ms)[0m  [1m[31mDELETE FROM "workouts" WHERE "workouts"."id" = ?[0m  [["id", 7]]
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+Redirected to http://localhost:3000/workouts
+Completed 302 Found in 9ms (ActiveRecord: 1.9ms | Allocations: 1989)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:38:48 +0200
+Processing by WorkoutsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 518)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 1937)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.1ms | Allocations: 2184)
+
+
+Started GET "/workouts/6" for ::1 at 2026-04-14 14:38:49 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.0ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 6]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1717)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 2872)
+Completed 200 OK in 6ms (Views: 4.5ms | ActiveRecord: 0.2ms | Allocations: 3477)
+
+
+Started DELETE "/workouts/6?_method=delete" for ::1 at 2026-04-14 14:38:52 +0200
+Processing by WorkoutsController#destroy as TURBO_STREAM
+  Parameters: {"id"=>"6"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:37:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+  [1m[36mWorkout Destroy (0.8ms)[0m  [1m[31mDELETE FROM "workouts" WHERE "workouts"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+Redirected to http://localhost:3000/workouts
+Completed 302 Found in 13ms (ActiveRecord: 1.3ms | Allocations: 1983)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:38:52 +0200
+Processing by WorkoutsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 473)
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 1893)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms | Allocations: 2142)
+
+
+Started GET "/" for ::1 at 2026-04-14 14:39:25 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (5.5ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 13.1ms | Allocations: 473)
+  Rendered layout layouts/application.html.erb (Duration: 27.5ms | Allocations: 1926)
+Completed 200 OK in 35ms (Views: 24.7ms | ActiveRecord: 5.5ms | Allocations: 2171)
+
+
+Started GET "/" for ::1 at 2026-04-14 14:39:59 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 6954)
+  Rendered layout layouts/application.html.erb (Duration: 48.7ms | Allocations: 47185)
+Completed 200 OK in 61ms (Views: 48.4ms | ActiveRecord: 2.6ms | Allocations: 58212)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:41:31 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (1.7ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 7.6ms | Allocations: 481)
+  Rendered layout layouts/application.html.erb (Duration: 19.5ms | Allocations: 2052)
+Completed 200 OK in 27ms (Views: 23.3ms | ActiveRecord: 1.7ms | Allocations: 2305)
+
+
+Started GET "/workouts/1" for ::1 at 2026-04-14 14:41:41 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWorkout Load (2.5ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+Completed 404 Not Found in 16ms (ActiveRecord: 2.4ms | Allocations: 6466)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Workout with 'id'="1"):
+  
+app/controllers/workouts_controller.rb:7:in `show'
+Started GET "/workouts/2" for ::1 at 2026-04-14 14:41:52 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mWorkout Load (4.6ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+Completed 404 Not Found in 12ms (ActiveRecord: 4.5ms | Allocations: 854)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Workout with 'id'="2"):
+  
+app/controllers/workouts_controller.rb:7:in `show'
+Started GET "/workout/1" for ::1 at 2026-04-14 14:42:05 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/workout/1"):
+  
+Started GET "/workout" for ::1 at 2026-04-14 14:42:13 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/workout"):
+  
+Started GET "/workout" for ::1 at 2026-04-14 14:42:23 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/workout"):
+  
+Started GET "/workouts" for ::1 at 2026-04-14 14:42:26 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (4.8ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 8.1ms | Allocations: 473)
+  Rendered layout layouts/application.html.erb (Duration: 14.9ms | Allocations: 2051)
+Completed 200 OK in 18ms (Views: 11.9ms | ActiveRecord: 4.3ms | Allocations: 2296)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-14 14:42:32 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 17.3ms | Allocations: 7572)
+  Rendered layout layouts/application.html.erb (Duration: 19.9ms | Allocations: 8746)
+Completed 200 OK in 26ms (Views: 20.4ms | ActiveRecord: 0.0ms | Allocations: 9095)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:42:32 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 479)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 2023)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.2ms | Allocations: 2271)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:42:33 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 473)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 2027)
+Completed 200 OK in 7ms (Views: 6.2ms | ActiveRecord: 0.2ms | Allocations: 2277)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:42:33 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 473)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 2009)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.1ms | Allocations: 2253)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:42:33 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 473)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 2015)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.3ms | Allocations: 2259)
+
+
+Started GET "/workout" for ::1 at 2026-04-14 14:42:40 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/workout"):
+  
+Started GET "/workouts/1" for ::1 at 2026-04-14 14:42:44 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mWorkout Load (3.4ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+Completed 404 Not Found in 6ms (ActiveRecord: 3.4ms | Allocations: 838)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Workout with 'id'="1"):
+  
+app/controllers/workouts_controller.rb:7:in `show'
+Started GET "/workouts/0" for ::1 at 2026-04-14 14:42:48 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"0"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 838)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Workout with 'id'="0"):
+  
+app/controllers/workouts_controller.rb:7:in `show'
+Started GET "/workouts" for ::1 at 2026-04-14 14:42:55 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 473)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 2039)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.2ms | Allocations: 2283)
+
+
+Started GET "/" for ::1 at 2026-04-14 14:42:57 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 473)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 2021)
+Completed 200 OK in 7ms (Views: 5.9ms | ActiveRecord: 0.1ms | Allocations: 2264)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-14 14:42:58 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1064)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 2223)
+Completed 200 OK in 8ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 2473)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-14 14:42:59 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1063)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 2222)
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms | Allocations: 2472)
+
+
+Started POST "/workouts" for ::1 at 2026-04-14 14:43:07 +0200
+Processing by WorkoutsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "workout"=>{"name"=>"etsf", "date"=>"", "notes"=>""}, "commit"=>"Save"}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+  [1m[36mWorkout Create (2.3ms)[0m  [1m[32mINSERT INTO "workouts" ("name", "date", "notes", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?) RETURNING "id"[0m  [["name", "etsf"], ["date", nil], ["notes", ""], ["created_at", "2026-04-14 12:43:07.449190"], ["updated_at", "2026-04-14 12:43:07.449190"]]
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:20:in `create'
+Redirected to http://localhost:3000/workouts/8
+Completed 302 Found in 12ms (ActiveRecord: 3.8ms | Allocations: 3633)
+
+
+Started GET "/workouts/8" for ::1 at 2026-04-14 14:43:07 +0200
+Processing by WorkoutsController#show as TURBO_STREAM
+  Parameters: {"id"=>"8"}
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 8]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 48.2ms | Allocations: 11680)
+  Rendered layout layouts/application.html.erb (Duration: 50.0ms | Allocations: 12835)
+Completed 200 OK in 52ms (Views: 49.4ms | ActiveRecord: 1.0ms | Allocations: 13552)
+
+
+Started GET "/workouts/8/edit" for ::1 at 2026-04-14 14:43:09 +0200
+Processing by WorkoutsController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:15:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/edit.html.erb within layouts/application
+  Rendered workouts/edit.html.erb within layouts/application (Duration: 6.9ms | Allocations: 1387)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 2542)
+Completed 200 OK in 16ms (Views: 11.6ms | ActiveRecord: 0.2ms | Allocations: 3217)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:43:09 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 512)
+  Rendered layout layouts/application.html.erb (Duration: 8.2ms | Allocations: 2067)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.1ms | Allocations: 2312)
+
+
+Started GET "/workouts/8" for ::1 at 2026-04-14 14:43:09 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 8]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 6.6ms | Allocations: 1874)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 3029)
+Completed 200 OK in 13ms (Views: 9.8ms | ActiveRecord: 0.4ms | Allocations: 3633)
+
+
+Started GET "/workouts/8" for ::1 at 2026-04-14 14:43:10 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 8]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1832)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 2993)
+Completed 200 OK in 12ms (Views: 7.1ms | ActiveRecord: 0.4ms | Allocations: 3597)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:43:11 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 509)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 2048)
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.2ms | Allocations: 2293)
+
+
+Started GET "/workouts/7" for ::1 at 2026-04-14 14:43:17 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms | Allocations: 839)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Workout with 'id'="7"):
+  
+app/controllers/workouts_controller.rb:7:in `show'
+Started GET "/workouts/6" for ::1 at 2026-04-14 14:43:20 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.3ms | Allocations: 838)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Workout with 'id'="6"):
+  
+app/controllers/workouts_controller.rb:7:in `show'
+Started GET "/workouts/5" for ::1 at 2026-04-14 14:43:23 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.2ms | Allocations: 838)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Workout with 'id'="5"):
+  
+app/controllers/workouts_controller.rb:7:in `show'
+Started GET "/workouts/4" for ::1 at 2026-04-14 14:43:26 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 4]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 6.8ms | Allocations: 3034)
+  Rendered layout layouts/application.html.erb (Duration: 9.1ms | Allocations: 4204)
+Completed 200 OK in 12ms (Views: 9.6ms | ActiveRecord: 0.4ms | Allocations: 4808)
+
+
+Started DELETE "/workouts/4?_method=delete" for ::1 at 2026-04-14 14:43:34 +0200
+Processing by WorkoutsController#destroy as TURBO_STREAM
+  Parameters: {"id"=>"4"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:37:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+  [1m[36mWorkout Destroy (6.6ms)[0m  [1m[31mDELETE FROM "workouts" WHERE "workouts"."id" = ?[0m  [["id", 4]]
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+Redirected to http://localhost:3000/workouts
+Completed 302 Found in 13ms (ActiveRecord: 7.4ms | Allocations: 2232)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:43:35 +0200
+Processing by WorkoutsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 473)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2042)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.1ms | Allocations: 2290)
+
+
+Started GET "/workouts/8" for ::1 at 2026-04-14 14:43:36 +0200
+Processing by WorkoutsController#show as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mWorkout Load (0.4ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:7:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/show.html.erb within layouts/application
+  [1m[36mExercise Load (0.1ms)[0m  [1m[34mSELECT "exercises".* FROM "exercises" WHERE "exercises"."workout_id" = ?[0m  [["workout_id", 8]]
+  ↳ app/views/workouts/show.html.erb:13
+  Rendered workouts/show.html.erb within layouts/application (Duration: 10.5ms | Allocations: 1847)
+  Rendered layout layouts/application.html.erb (Duration: 14.3ms | Allocations: 3007)
+Completed 200 OK in 20ms (Views: 15.3ms | ActiveRecord: 0.4ms | Allocations: 3611)
+
+
+Started GET "/workouts/8/edit" for ::1 at 2026-04-14 14:43:37 +0200
+Processing by WorkoutsController#edit as HTML
+  Parameters: {"id"=>"8"}
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:15:in `edit'
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/edit.html.erb within layouts/application
+  Rendered workouts/edit.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1095)
+  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 2251)
+Completed 200 OK in 6ms (Views: 4.0ms | ActiveRecord: 0.2ms | Allocations: 2856)
+
+
+Started DELETE "/workouts/8?_method=delete" for ::1 at 2026-04-14 14:43:39 +0200
+Processing by WorkoutsController#destroy as TURBO_STREAM
+  Parameters: {"id"=>"8"}
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts" WHERE "workouts"."id" = ? LIMIT ?[0m  [["id", 8], ["LIMIT", 1]]
+  ↳ app/controllers/workouts_controller.rb:37:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+  [1m[36mWorkout Destroy (1.1ms)[0m  [1m[31mDELETE FROM "workouts" WHERE "workouts"."id" = ?[0m  [["id", 8]]
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/workouts_controller.rb:38:in `destroy'
+Redirected to http://localhost:3000/workouts
+Completed 302 Found in 7ms (ActiveRecord: 1.6ms | Allocations: 2120)
+
+
+Started GET "/workouts" for ::1 at 2026-04-14 14:43:39 +0200
+Processing by WorkoutsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 427)
+  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 1984)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.1ms | Allocations: 2231)
+
+
