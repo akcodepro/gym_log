@@ -2387,3 +2387,472 @@ Processing by WorkoutsController#index as TURBO_STREAM
 Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.1ms | Allocations: 2231)
 
 
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1[0m  [[nil, "environment"]]
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseCreateUsers (20260415123422)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "email" varchar DEFAULT '' NOT NULL, "encrypted_password" varchar DEFAULT '' NOT NULL, "reset_password_token" varchar, "reset_password_sent_at" datetime(6), "remember_created_at" datetime(6), "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260415123422') RETURNING "version"[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for ::1 at 2026-04-15 14:37:14 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1349)
+  Rendered layout layouts/application.html.erb (Duration: 55.5ms | Allocations: 41346)
+Completed 200 OK in 74ms (Views: 53.1ms | ActiveRecord: 5.2ms | Allocations: 49345)
+
+
+Started GET "/" for ::1 at 2026-04-15 14:37:21 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.0ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 434)
+  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 1930)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 2186)
+
+
+Started GET "/users" for ::1 at 2026-04-15 14:37:23 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/users"):
+  
+Started GET "/users/signup" for ::1 at 2026-04-15 14:37:31 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/users/signup"):
+  
+Started GET "/users/sign_up" for ::1 at 2026-04-15 14:37:39 +0200
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 225)
+  Rendered devise/shared/_links.html.erb (Duration: 0.5ms | Allocations: 510)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 6.8ms | Allocations: 3357)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 4635)
+Completed 200 OK in 20ms (Views: 9.8ms | ActiveRecord: 0.7ms | Allocations: 12622)
+
+
+Started POST "/users" for ::1 at 2026-04-15 14:39:58 +0200
+Processing by Devise::RegistrationsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "reset_password_token", "reset_password_sent_at", "remember_created_at", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING "id"[0m  [["email", "test@test.com"], ["encrypted_password", "[FILTERED]"], ["reset_password_token", "[FILTERED]"], ["reset_password_sent_at", "[FILTERED]"], ["remember_created_at", nil], ["created_at", "2026-04-15 12:39:59.268113"], ["updated_at", "2026-04-15 12:39:59.268113"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/
+Completed 303 See Other in 705ms (ActiveRecord: 2.8ms | Allocations: 11485)
+
+
+Started GET "/" for ::1 at 2026-04-15 14:39:59 +0200
+Processing by WorkoutsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.0ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 427)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 1963)
+Completed 200 OK in 2ms (Views: 2.0ms | ActiveRecord: 0.0ms | Allocations: 2258)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-15 14:40:03 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 6.2ms | Allocations: 1810)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 2984)
+Completed 200 OK in 19ms (Views: 8.8ms | ActiveRecord: 0.8ms | Allocations: 7400)
+
+
+Started GET "/workouts" for ::1 at 2026-04-15 14:40:06 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.0ms | Allocations: 434)
+  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 1938)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.2ms | Allocations: 2189)
+
+
+Started GET "/" for ::1 at 2026-04-15 14:40:24 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 427)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 1933)
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.1ms | Allocations: 2180)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-15 14:40:25 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1007)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 2181)
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 2435)
+
+
+Started GET "/" for ::1 at 2026-04-15 14:40:26 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.3ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 427)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 1935)
+Completed 200 OK in 16ms (Views: 15.7ms | ActiveRecord: 0.3ms | Allocations: 2183)
+
+
+Started GET "/" for ::1 at 2026-04-15 14:40:28 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 427)
+  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 1949)
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.1ms | Allocations: 2196)
+
+
+Started GET "/" for ::1 at 2026-04-15 14:41:24 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.0ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1001)
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:24
+  Rendered layout layouts/application.html.erb (Duration: 21.0ms | Allocations: 26421)
+Completed 200 OK in 23ms (Views: 19.7ms | ActiveRecord: 2.0ms | Allocations: 28328)
+
+
+Started DELETE "/users/sign_out?_method=delete" for ::1 at 2026-04-15 14:41:45 +0200
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 11ms (ActiveRecord: 0.3ms | Allocations: 2890)
+
+
+Started GET "/" for ::1 at 2026-04-15 14:41:45 +0200
+Processing by WorkoutsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.0ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 430)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 2083)
+Completed 200 OK in 12ms (Views: 11.8ms | ActiveRecord: 0.0ms | Allocations: 2377)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:41:45 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 540)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 9.3ms | Allocations: 2239)
+  Rendered layout layouts/application.html.erb (Duration: 11.2ms | Allocations: 3590)
+Completed 200 OK in 18ms (Views: 15.7ms | ActiveRecord: 0.0ms | Allocations: 4816)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-15 14:41:48 +0200
+Processing by WorkoutsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/new.html.erb within layouts/application
+  Rendered workouts/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1347)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 2644)
+Completed 200 OK in 9ms (Views: 4.9ms | ActiveRecord: 0.4ms | Allocations: 5741)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:41:52 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 113)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 2149)
+Completed 200 OK in 9ms (Views: 7.0ms | ActiveRecord: 0.0ms | Allocations: 2862)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:41:53 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 113)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.7ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 2150)
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 0.0ms | Allocations: 2865)
+
+
+Started POST "/users/sign_in" for ::1 at 2026-04-15 14:42:12 +0200
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 263ms (ActiveRecord: 0.3ms | Allocations: 7479)
+
+
+Started GET "/" for ::1 at 2026-04-15 14:42:12 +0200
+Processing by WorkoutsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.0ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 428)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:24
+  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 2588)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.1ms | Allocations: 2838)
+
+
+Started GET "/" for ::1 at 2026-04-15 14:42:34 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 427)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:24
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 2587)
+Completed 200 OK in 45ms (Views: 42.7ms | ActiveRecord: 0.3ms | Allocations: 2838)
+
+
+Started DELETE "/users/sign_out?_method=delete" for ::1 at 2026-04-15 14:43:35 +0200
+Processing by Devise::SessionsController#destroy as TURBO_STREAM
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 303 See Other in 31ms (ActiveRecord: 0.3ms | Allocations: 1884)
+
+
+Started GET "/" for ::1 at 2026-04-15 14:43:35 +0200
+Processing by WorkoutsController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.1ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 427)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 2040)
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.1ms | Allocations: 2291)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:43:35 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 113)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.1ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 2150)
+Completed 200 OK in 9ms (Views: 6.3ms | ActiveRecord: 0.0ms | Allocations: 2869)
+
+
+Started GET "/workouts" for ::1 at 2026-04-15 14:43:36 +0200
+Processing by WorkoutsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering workouts/index.html.erb within layouts/application
+  [1m[36mWorkout Load (0.2ms)[0m  [1m[34mSELECT "workouts".* FROM "workouts"[0m
+  ↳ app/views/workouts/index.html.erb:3
+  Rendered workouts/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 427)
+  Rendered layout layouts/application.html.erb (Duration: 5.1ms | Allocations: 2013)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.2ms | Allocations: 2261)
+
+
+Started GET "/" for ::1 at 2026-04-15 14:45:16 +0200
+Processing by WorkoutsController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 1223)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:45:16 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.9ms | Allocations: 538)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 8.7ms | Allocations: 1788)
+  Rendered layout layouts/application.html.erb (Duration: 17.0ms | Allocations: 22143)
+Completed 200 OK in 32ms (Views: 21.3ms | ActiveRecord: 2.5ms | Allocations: 27608)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:45:19 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 113)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 4.8ms | Allocations: 2149)
+Completed 200 OK in 8ms (Views: 5.5ms | ActiveRecord: 0.0ms | Allocations: 2858)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:45:20 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 113)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.3ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 2149)
+Completed 200 OK in 7ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 2879)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:45:21 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 113)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 2149)
+Completed 200 OK in 8ms (Views: 6.1ms | ActiveRecord: 0.0ms | Allocations: 2893)
+
+
+Started GET "/" for ::1 at 2026-04-15 14:45:23 +0200
+Processing by WorkoutsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 440)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:45:23 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 113)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 1.9ms | Allocations: 2169)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.0ms | Allocations: 2919)
+
+
+Started GET "/" for ::1 at 2026-04-15 14:45:24 +0200
+Processing by WorkoutsController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 440)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:45:24 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 113)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 2153)
+Completed 200 OK in 17ms (Views: 9.8ms | ActiveRecord: 0.0ms | Allocations: 2902)
+
+
+Started GET "/workouts" for ::1 at 2026-04-15 14:45:26 +0200
+Processing by WorkoutsController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 431)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:45:26 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 113)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.1ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 2153)
+Completed 200 OK in 7ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 2871)
+
+
+Started GET "/workouts" for ::1 at 2026-04-15 14:45:27 +0200
+Processing by WorkoutsController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 438)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:45:27 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 113)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 2153)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 2911)
+
+
+Started GET "/workouts" for ::1 at 2026-04-15 14:45:28 +0200
+Processing by WorkoutsController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 419)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:45:28 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 113)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 9.1ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 2169)
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.0ms | Allocations: 2933)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-15 14:45:28 +0200
+Processing by WorkoutsController#new as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 435)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:45:28 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 113)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 2153)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 2872)
+
+
+Started GET "/workouts/new" for ::1 at 2026-04-15 14:45:28 +0200
+Processing by WorkoutsController#new as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 437)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:45:28 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 113)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 2153)
+Completed 200 OK in 5ms (Views: 3.9ms | ActiveRecord: 0.0ms | Allocations: 2925)
+
+
+Started GET "/workouts" for ::1 at 2026-04-15 14:45:28 +0200
+Processing by WorkoutsController#index as HTML
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 431)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:45:28 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 113)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 2153)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.0ms | Allocations: 2905)
+
+
+Started GET "/" for ::1 at 2026-04-15 14:45:29 +0200
+Processing by WorkoutsController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 428)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:45:29 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 113)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 895)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 2153)
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.0ms | Allocations: 2917)
+
+
+Started GET "/users/sign_in" for ::1 at 2026-04-15 14:49:22 +0200
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.4ms | Allocations: 538)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 1802)
+  Rendered layout layouts/application.html.erb (Duration: 15.4ms | Allocations: 22181)
+Completed 200 OK in 26ms (Views: 16.8ms | ActiveRecord: 6.3ms | Allocations: 27827)
+
+
