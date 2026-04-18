@@ -22,7 +22,7 @@ class WorkoutsController < ApplicationController
     if @workout.save
       redirect_to @workout
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
